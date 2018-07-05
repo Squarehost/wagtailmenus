@@ -485,6 +485,11 @@ class Menu:
                     else:
                         has_children_in_menu = self.page_has_children(page)
 
+                if type(page) is Page:
+                    setattr(item, 'is_blog', hasattr(page.specific, 'is_blog'))
+                else:
+                    setattr(item, 'is_blog', hasattr(page, 'is_blog'))
+
                 setattr(item, 'has_children_in_menu', has_children_in_menu)
 
                 if apply_active_classes:
